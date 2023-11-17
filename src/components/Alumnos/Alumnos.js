@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
-import Musica from '../Musica/Musica'; // Asegúrate de ajustar la ruta según la ubicación real de tu componente Musica.
-
-
 import Global from '../../Global';
 
 export default class Alumnos extends Component {
@@ -97,24 +94,40 @@ export default class Alumnos extends Component {
 
   render() {
     return (
-      <div className='d-flex'>
-        <h1>Alumnos</h1>
-        <div>
-          <button onClick={this.generarGruposAleatorios}>Generar Grupos</button>
-          <button onClick={this.descargarPDF}>Descargar PDF</button>
+      <div className='container mt-5'>
+        <h1 className='mb-4'>Alumnos</h1>
+        <div className='d-flex justify-content-between mb-4'>
+          <div>
+            <button className='btn btn-primary mr-2' onClick={this.generarGruposAleatorios}>
+              Generar Grupos
+            </button>
+            <button className='btn btn-success' onClick={this.descargarPDF}>
+              Descargar PDF
+            </button>
+          </div>
         </div>
-        <div id='alumnos'>
-          {this.state.alumnos.map((alumno, index) => (
-            <p key={index}>{alumno.nombre} {alumno.apellidos}</p>
-          ))}
-        </div>
-        <div>
-          {this.state.grupos.map((grupo, index) => (
-            <div key={index}>
-              <h3>Grupo {index + 1}</h3>
-              <div id={`div${index}`} className="hola" style={{ border: '1px solid #ccc', padding: '5px', marginBottom: '10px' }} />
+        <div className='row'>
+          <div className='col-md-6'>
+            <h2>Lista de Alumnos</h2>
+            <div id='alumnos'>
+              {this.state.alumnos.map((alumno, index) => (
+                <p key={index}>{alumno.nombre} {alumno.apellidos}</p>
+              ))}
             </div>
-          ))}
+          </div>
+          <div className='col-md-6'>
+            <h2>Grupos</h2>
+            {this.state.grupos.map((grupo, index) => (
+              <div key={index} className='mb-4'>
+                <h3>Grupo {index + 1}</h3>
+                <div
+                  id={`div${index}`}
+                  className='border p-3'
+                  style={{ border: '1px solid #ccc', padding: '5px', marginBottom: '10px' }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );

@@ -1,0 +1,26 @@
+/* Estilos para el componente Alumnos */
+
+.d-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin: 5px;
+  }
+  
+  #alumnos {
+    margin: 20px 0;
+  }
+  
+  .hola {
+    margin: 5px;
+  }
+  
+  /* Añadir más estilos según sea necesario */
+  

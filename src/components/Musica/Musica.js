@@ -1,14 +1,19 @@
 import React from 'react';
 import useSound from 'use-sound';
-import Tambores from "../../assets/musica/tambores.mp3"
+import Tambores from "../../assets/musica/tambores.mp3";
 
 const Musica = () => {
-  const [play] = useSound(Tambores, { volume: 10, soundEnabled: true });
+  const [play, { stop }] = useSound(Tambores, { volume: 1, soundEnabled: true });
+
+  const reproducir = () => {
+    stop(); // Detener la reproducción anterior si aún está en curso
+    play();
+  };
 
   return (
     <div>
       <h1>Música</h1>
-      <button onClick={play}>Reproducir Sonido</button>
+      {/* No hay necesidad de un botón aquí */}
     </div>
   );
 };
